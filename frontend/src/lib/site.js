@@ -1,3 +1,5 @@
+import drRafaelPhoto from "@/assets/dr-rafael.png";
+
 export const SITE = {
   name: "Dr Rafael Dantas",
   fullName: "Francisco Rafael Pinheiro Dantas",
@@ -33,6 +35,7 @@ export const NAV_LINKS = [
   { id: "servicos", label: "Serviços" },
   { id: "abordagem", label: "Abordagem" },
   { id: "trajetoria", label: "Trajetória" },
+  { id: "depoimentos", label: "Depoimentos" },
   { id: "contato", label: "Contato" },
 ];
 
@@ -216,5 +219,39 @@ export const TRIAGE_OPTIONS = [
   },
 ];
 
-export const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1688565631550-ff8aa569f71a?crop=entropy&cs=srgb&fm=jpg&q=85";
+export const HERO_IMAGE = drRafaelPhoto;
+
+export const TESTIMONIALS = [
+  {
+    id: "pos-covid",
+    quote:
+      "Depois da alta da UTI, eu não conseguia subir um lance de escada sem me perder no fôlego. O Dr. Rafael montou um plano que me devolveu o ar e a confiança. Hoje voltei a caminhar com minha família.",
+    name: "Ana C.",
+    context: "Paciente — Reabilitação pós-COVID e pós-intubação",
+    initials: "AC",
+  },
+  {
+    id: "domiciliar",
+    quote:
+      "O cuidado com minha mãe em casa mudou tudo: sem desgaste de deslocamento e sempre explicando cada etapa para a família. Profissionalismo e carinho no mesmo atendimento.",
+    name: "João P.",
+    context: "Familiar de paciente acamada — atendimento domiciliar",
+    initials: "JP",
+  },
+  {
+    id: "respiratoria",
+    quote:
+      "Anos de bronquite crônica e ninguém tinha me ensinado a respirar de verdade. O treinamento que fiz muda meu dia a dia até hoje.",
+    name: "Maria S.",
+    context: "Paciente — Fisioterapia respiratória",
+    initials: "MS",
+  },
+  {
+    id: "institucional",
+    quote:
+      "A capacitação em simulação realística transformou a segurança das nossas equipes. Didática impecável de quem gere um centro estadual de referência.",
+    name: "Coordenação de equipe multiprofissional",
+    context: "Instituição de saúde — capacitação em serviço",
+    initials: "CE",
+  },
+];

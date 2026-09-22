@@ -9,6 +9,7 @@ import Marquee from "@/components/Marquee";
 import Manifesto from "@/components/Manifesto";
 import Services from "@/components/Services";
 import Trajectory from "@/components/Trajectory";
+import Testimonials from "@/components/Testimonials";
 import Triage from "@/components/Triage";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -65,6 +66,7 @@ function App() {
             <Manifesto />
             <Services />
             <Trajectory />
+            <Testimonials />
             <Triage />
             <Contact />
           </main>

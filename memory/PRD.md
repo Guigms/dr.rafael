@@ -17,6 +17,8 @@
 - Logo oficial em /app/frontend/src/assets/logo.png (header, footer) e /app/frontend/public/logo.png (favicon)
 
 ## Seções implementadas (2026-09-22)
+0. Hero com FOTO REAL do Dr. Rafael (src/assets/dr-rafael.png, fundo preto, arco + tilt 3D)
+7b. Depoimentos (2026-09-22): depoimento destaque + 3 cards, estrelas, avatares com iniciais, nav "Depoimentos" — CONTEÚDO DE EXEMPLO, substituir por avaliações reais em TESTIMONIALS (src/lib/site.js)
 1. Header fixo glass com logo mix-blend-multiply, nav âncora (lenis), CTA agendar
 2. Hero: reveal mascarado linha-a-linha, parallax scroll + tilt 3D na imagem, emblema SVG da coluna com pulso respiratório, glass cards (Einstein / SOBRATI), 3 credenciais
 3. Marquee editorial lento com marcos do currículo

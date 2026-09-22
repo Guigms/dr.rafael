@@ -183,11 +183,11 @@ const Hero = () => {
                 >
                   <img
                     src={HERO_IMAGE}
-                    alt="Fisioterapeuta intensivista em atendimento"
-                    className="h-[460px] w-full object-cover sm:h-[540px]"
+                    alt="Dr. Rafael Dantas — Fisioterapeuta"
+                    className="h-[460px] w-full object-cover object-top sm:h-[540px]"
                   />
                 </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-petrol/50 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 via-transparent to-transparent" />
               </div>
             </motion.div>
 
