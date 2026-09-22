@@ -1,0 +1,294 @@
+{
+  "project_name": "Dr Rafael Dantas — Fisioterapia Institucional",
+  "archetype": "Architectural Precision Meets Clinical Warmth (Swiss Medical Haute-Editorial)",
+  "vibe": "Awwwards Site-of-the-Day institutional medical portfolio. Pristine porcelain light palette, deep petrol teal and sage teal accents inspired by the official logo, editorial typography, numbered manifesto chapters, interactive kinetic anatomical spine hero motif, timeline of academic and clinical excellence (Albert Einstein-SP, SOBRATI, ESP-CE, UTI COVID), dynamic service drawer, and WhatsApp instant booking.",
+  "target_audience": "Patients seeking high-complexity respiratory rehabilitation, post-COVID functional recovery, intensive home care, and institutions/health programs looking for expert consultation and health education.",
+  "language": "pt-BR",
+  "theme": {
+    "mode": "light",
+    "background": "#FBFBF9",
+    "surface": "#FFFFFF",
+    "surface_subtle": "#F4F7F6",
+    "foreground": "#122026",
+    "muted_foreground": "#526B74",
+    "brand_petrol": "#184E60",
+    "brand_teal": "#27948B",
+    "brand_teal_light": "#E8F4F2",
+    "brand_accent_glow": "#45B5AA",
+    "border_subtle": "rgba(24, 78, 96, 0.12)",
+    "border_highlight": "rgba(39, 148, 139, 0.28)",
+    "logo_asset_url": "https://customer-assets-jai6qajn.emergentagent.net/job_76a107a0-7e46-4f67-9641-e6137461a76d/artifacts/nd54rash_image.png"
+  },
+  "typography": {
+    "heading_font": "Cormorant Garamond, Newsreader, Georgia, serif",
+    "body_font": "Plus Jakarta Sans, Manrope, system-ui, -apple-system, sans-serif",
+    "mono_font": "JetBrains Mono, ui-monospace, monospace",
+    "rules": {
+      "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-serif font-light tracking-tight leading-[1.08]",
+      "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-serif font-normal tracking-tight text-[#122026]",
+      "section_h3": "text-xl sm:text-2xl font-serif font-medium text-[#184E60]",
+      "eyebrow_badge": "text-xs font-mono uppercase tracking-[0.24em] font-semibold text-[#27948B]",
+      "body": "text-base sm:text-lg text-[#526B74] font-sans leading-relaxed"
+    }
+  },
+  "layout_and_grid": {
+    "style": "Swiss Editorial Grid with generous whitespace (p-8 to p-24) and intentional asymmetry",
+    "container": "max-w-7xl mx-auto px-6 sm:px-8 lg:px-12",
+    "header_strategy": "Crystal Glass sticky header (backdrop-blur-xl bg-[#FBFBF9]/85 border-b border-[#184E60]/10 z-50)",
+    "footer_strategy": "High contrast deep petrol architectural block (#102933) with massive editorial typographic signoff and clean credentials"
+  },
+  "visual_enhancers": {
+    "spine_kinetic_canvas": "Interactive SVG / Canvas spinal vertebrae simulation with floating pulse points reflecting movement and respiratory expansion",
+    "masked_text_reveal": "Framer-motion staggered line-by-line reveal on initial hero load",
+    "editorial_marquee": "Slow, elegant drift marquee ribbon with curated manifesto words: 'Reabilitação Intensiva • Fisioterapia Respiratória • Ciência e Empatia • Qualidade de Vida • Gestão em Saúde'",
+    "frosted_stat_cards": "Minimalist cardless or 1px hairline border containers with nested radii and glowing teal micro-dot indicators",
+    "ambient_shadows": "shadow-[0_20px_50px_rgba(24,78,96,0.06)]"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "test_id": "hero-section",
+      "title": "Kinetic Hero with Signature On-Load Reveal & Anatomical Spine Emblem",
+      "eyebrow": "FISIOTERAPIA INSTITUCIONAL & CLÍNICA AVANÇADA",
+      "headline": "Onde o rigor científico intensivo encontra o cuidado humano do movimento.",
+      "subheadline": "Dr. Francisco Rafael Pinheiro Dantas — Especialista Albert Einstein-SP e Mestre SOBRATI. Reabilitação respiratória de alta precisão, atendimento domiciliar e excelência em saúde.",
+      "ctas": [
+        {
+          "label": "Agendar Consulta via WhatsApp",
+          "action": "open_whatsapp",
+          "test_id": "hero-cta-whatsapp",
+          "style": "primary-pill-teal"
+        },
+        {
+          "label": "Conhecer Trajetória & Serviços",
+          "action": "scroll_services",
+          "test_id": "hero-cta-services",
+          "style": "outline-editorial"
+        }
+      ]
+    },
+    {
+      "id": "marquee",
+      "test_id": "editorial-marquee",
+      "title": "Manifesto Ribbon",
+      "items": [
+        "Especialista em UTI Adulto (Albert Einstein - SP)",
+        "Mestre em Terapia Intensiva (SOBRATI)",
+        "Reabilitação Pós-COVID & Respiratória",
+        "Atendimento Domiciliar Personalizado",
+        "Gestão em Saúde & Simulação Clínica (ESP/CE)",
+        "Movimento • Saúde • Qualidade de Vida"
+      ]
+    },
+    {
+      "id": "manifesto",
+      "test_id": "manifesto-section",
+      "title": "Manifesto do Movimento: Três Capítulos de Cuidado",
+      "description": "Uma abordagem clínica que reconecta anatomia, respiração e autonomia diária.",
+      "chapters": [
+        {
+          "number": "01",
+          "title": "Fisiologia Respiratória Aplicada",
+          "text": "Da alta complexidade hospitalar de UTI ao domicílio: estratégias respiratórias fundamentadas em ventilação protetora e reexpansão pulmonar."
+        },
+        {
+          "number": "02",
+          "title": "Biomecânica e Reabilitação Funcional",
+          "text": "Cada vértebra, articulação e cadeia muscular integrada para restaurar a dignidade e a independência de movimentos sem dor."
+        },
+        {
+          "number": "03",
+          "title": "Humanização e Base Científica",
+          "text": "Mais de uma década na linha de frente do SUS, preceptoria de residência e centros de simulação traduzidos em escuta atenta e conduta ética."
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "test_id": "services-section",
+      "title": "Especialidades Clínicas & Serviços",
+      "subtitle": "Tratamentos baseados em evidência para restaurar vigor, oxigenação e mobilidade.",
+      "items": [
+        {
+          "id": "fisioterapia-respiratoria",
+          "test_id": "service-card-respiratory",
+          "title": "Fisioterapia Respiratória Avançada",
+          "badge": "Alta Complexidade",
+          "description": "Desobstrução brônquica, fortalecimento da musculatura ventilatória, treinamento muscular inspiratório (TMI) e recondicionamento cardiorrespiratório para patologias agudas e crônicas.",
+          "image": "https://images.pexels.com/photos/32351204/pexels-photo-32351204.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        },
+        {
+          "id": "reabilitacao-pos-covid",
+          "test_id": "service-card-pos-covid",
+          "title": "Reabilitação Pós-COVID & Pós-Intubação",
+          "badge": "Recuperação Integrada",
+          "description": "Protocolos específicos para combate à fadiga crônica, dispneia residual, sequelas fibróticas e polineuropatia do doente crítico, com histórico de liderança em UTI COVID.",
+          "image": "https://images.unsplash.com/photo-1688565631550-ff8aa569f71a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBob3NwaXRhbCUyMGludGVuc2l2ZSUyMGNhcmUlMjBtZWRpY2FsJTIwYnJlYXRoaW5nJTIwdGhlcmFweXxlbnwwfHx8fDE3OTAwOTIzMjZ8MA&ixlib=rb-4.1.0&q=85"
+        },
+        {
+          "id": "atendimento-domiciliar",
+          "test_id": "service-card-home-care",
+          "title": "Atendimento Fisioterapêutico Domiciliar",
+          "badge": "Conforto & Segurança",
+          "description": "Assistência no conforto do lar para pacientes idosos, pós-cirúrgicos ou com restrição severa de mobilidade, garantindo continuidade terapêutica sem desgaste de locomoção.",
+          "image": "https://images.unsplash.com/photo-1723433892471-62f113c8c9a0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHwyfHxzZW5pb3IlMjByZWhhYmlsaXRhdGlvbiUyMGhvbWUlMjBjYXJlJTIwcGh5c2lvdGhlcmFwaXN0fGVufDB8fHx8MTc5MDA5MjMzMnww&ixlib=rb-4.1.0&q=85"
+        },
+        {
+          "id": "coluna-biomecanica",
+          "test_id": "service-card-spine",
+          "title": "Coluna & Reeducação Postural",
+          "badge": "Alívio & Movimento",
+          "description": "Tratamento de lombalgias, hérnias discais, cervicalgias e desequilíbrios miofasciais através de terapia manual, cinesioterapia específica e exercícios terapêuticos.",
+          "image": "https://images.unsplash.com/photo-1699523229487-bddb965a3307?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHw0fHxwaHlzaW90aGVyYXBpc3QlMjByZWhhYmlsaXRhdGlvbiUyMHNwaW5lJTIwdGhlcmFweSUyMGNsaW5pY3xlbnwwfHx8fDE3OTAwOTIzMjZ8MA&ixlib=rb-4.1.0&q=85"
+        },
+        {
+          "id": "educacao-em-saude",
+          "test_id": "service-card-education",
+          "title": "Educação em Saúde & Simulação Clínica",
+          "badge": "Acadêmico & Consultoria",
+          "description": "Capacitação para cuidadores, equipes multiprofissionais, workshops corporativos de ergonomia e consultoria em simulação realística de saúde.",
+          "image": "https://images.pexels.com/photos/20860590/pexels-photo-20860590.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        }
+      ]
+    },
+    {
+      "id": "trajectory",
+      "test_id": "experience-timeline-section",
+      "title": "Trajetória e Rigor Científico",
+      "subtitle": "Um currículo construído nos mais prestigiados centros de ensino e na prática intensiva hospitalar.",
+      "milestones": [
+        {
+          "period": "Especialização de Referência",
+          "institution": "Instituto Israelita Albert Einstein (SP)",
+          "role": "Especialista em Fisioterapia em Terapia Intensiva Adulto",
+          "details": "Treinamento intensivo no maior centro médico da América Latina, focado em ventilação mecânica invasiva e não invasiva, mobilização precoce de doentes críticos e monitorização hemodinâmica."
+        },
+        {
+          "period": "Mestrado Profissional",
+          "institution": "SOBRATI — Sociedade Brasileira de Terapia Intensiva",
+          "role": "Mestre em Terapia Intensiva Adulto",
+          "details": "Aprofundamento científico em terapêutica intensiva, suporte ventilatório e protocolos de desmame e reabilitação cardiopulmonar."
+        },
+        {
+          "period": "Gestão & Saúde Pública",
+          "institution": "Escola de Saúde Pública do Ceará (ESP/CE)",
+          "role": "Especialista em Saúde da Família & Especialista em Gestão para Resultados (GpR)",
+          "details": "Formação de excelência em saúde coletiva, gestão estratégica e tomada de decisão fundamentada em dados e impacto populacional."
+        },
+        {
+          "period": "Linha de Frente Hospitalar",
+          "institution": "Hospital Municipal Dr. João Elísio de Holanda",
+          "role": "Fisioterapeuta Intensivista — UTI COVID e Clínica Adulto",
+          "details": "Atuação decisiva em momentos críticos de pandemia, conduzindo intubações emergenciais, prono-posicionamento, ventilação de resgate e reabilitação funcional pós-extubação."
+        },
+        {
+          "period": "Gestão e Simulação em Saúde",
+          "institution": "CSS / ESP.CE",
+          "role": "Gerente do Centro Estadual de Simulação em Saúde & Membro do CODES",
+          "details": "Liderança de tecnologia educacional, metodologias ativas e simulação realística para treinamento de equipes multidisciplinares."
+        },
+        {
+          "period": "Saúde da Família & Comunidade",
+          "institution": "NASF Maracanaú (2013 - 2018)",
+          "role": "Fisioterapeuta da Equipe Núcleo de Apoio à Saúde da Família (5 anos)",
+          "details": "Cinco anos de dedicação direta ao cuidado comunitário, prevenção de incapacidades e apoio a idosos e famílias."
+        },
+        {
+          "period": "Docência Universitária & Formação",
+          "institution": "Faculdade Uninassau & CEEDS & ESP.CE/RIS",
+          "role": "Docente e Preceptor do Programa de Residência Integrada em Saúde",
+          "details": "Formação da nova geração de fisioterapeutas com ênfase em Saúde da Família, ética profissional e evidência científica."
+        }
+      ]
+    },
+    {
+      "id": "interactive_triage",
+      "test_id": "interactive-assessment-tool",
+      "title": "Guia Clínico Interativo de Avaliação",
+      "description": "Selecione o seu objetivo terapêutico ou quadro atual para receber uma recomendação direta de conduta e agilizar seu contato prévio com o Dr. Rafael.",
+      "options": [
+        "Reabilitação Respiratória / Falta de ar pós-infecção",
+        "Atendimento Domiciliar para Familiar Idoso ou Acamado",
+        "Dores Crônicas na Coluna e Restrição de Movimento",
+        "Pós-Alta Hospitalar ou Pós-Cirúrgico",
+        "Capacitação Institucional ou Educação em Saúde"
+      ]
+    },
+    {
+      "id": "contact",
+      "test_id": "contact-section",
+      "title": "Inicie Seu Plano de Reabilitação",
+      "subtitle": "Atendimento humanizado com hora marcada em consultório ou no conforto do seu domicílio.",
+      "form_fields": [
+        { "name": "name", "label": "Nome Completo", "type": "text", "test_id": "contact-input-name" },
+        { "name": "phone", "label": "Telefone / WhatsApp", "type": "tel", "test_id": "contact-input-phone" },
+        { "name": "service", "label": "Serviço de Interesse", "type": "select", "test_id": "contact-select-service" },
+        { "name": "location_type", "label": "Tipo de Atendimento (Domiciliar ou Consultório)", "type": "select", "test_id": "contact-select-modality" },
+        { "name": "message", "label": "Breve relato do quadro ou sintomas", "type": "textarea", "test_id": "contact-input-message" }
+      ],
+      "whatsapp_number": "+55 (85) 99999-9999",
+      "whatsapp_message_template": "Olá, Dr. Rafael Dantas! Gostaria de agendar uma consulta para avaliação fisioterapêutica.",
+      "disclaimer": "Informações de contato e endereço apresentadas como espaço configurável institucional."
+    }
+  ],
+  "floating_elements": {
+    "whatsapp_button": {
+      "test_id": "floating-whatsapp-button",
+      "label": "Fale no WhatsApp",
+      "tooltip": "Agendamento rápido diretamente com o Dr. Rafael",
+      "position": "bottom-6 right-6 z-50",
+      "color": "bg-[#25D366] text-white hover:bg-[#20bd5a] shadow-xl"
+    }
+  },
+  "curated_images": [
+    {
+      "category": "Hero / Branding",
+      "url": "https://customer-assets-jai6qajn.emergentagent.net/job_76a107a0-7e46-4f67-9641-e6137461a76d/artifacts/nd54rash_image.png",
+      "description": "Logomarca Oficial Dr. Rafael Dantas - Fisioterapia com elemento de coluna vertebral e tonalidades petróleo/teal."
+    },
+    {
+      "category": "Fisioterapia Respiratória / Terapia Intensiva",
+      "url": "https://images.pexels.com/photos/32351204/pexels-photo-32351204.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Profissional de saúde com máscara e suporte respiratório, simbolizando a expertise em UTI e cuidados ventilatórios."
+    },
+    {
+      "category": "Pós-COVID e Terapia Intensiva",
+      "url": "https://images.unsplash.com/photo-1688565631550-ff8aa569f71a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBob3NwaXRhbCUyMGludGVuc2l2ZSUyMGNhcmUlMjBtZWRpY2FsJTIwYnJlYXRoaW5nJTIwdGhlcmFweXxlbnwwfHx8fDE3OTAwOTIzMjZ8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Fisioterapeuta intensivista monitorando parâmetros vitais hospitalares com estetoscópio e scrub."
+    },
+    {
+      "category": "Atendimento Domiciliar e Reabilitação Sênior",
+      "url": "https://images.unsplash.com/photo-1723433892471-62f113c8c9a0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHwyfHxzZW5pb3IlMjByZWhhYmlsaXRhdGlvbiUyMGhvbWUlMjBjYXJlJTIwcGh5c2lvdGhlcmFwaXN0fGVufDB8fHx8MTc5MDA5MjMzMnww&ixlib=rb-4.1.0&q=85",
+      "description": "Fisioterapeuta realizando fortalecimento e reabilitação funcional motora no domicílio."
+    },
+    {
+      "category": "Coluna Vertebral e Terapia Manual",
+      "url": "https://images.unsplash.com/photo-1699523229487-bddb965a3307?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHw0fHxwaHlzaW90aGVyYXBpc3QlMjByZWhhYmlsaXRhdGlvbiUyMHNwaW5lJTIwdGhlcmFweSUyMGNsaW5pY3xlbnwwfHx8fDE3OTAwOTIzMjZ8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Terapia manual e manipulação vertebral detalhada para alívio de dores nas costas e alinhamento biomecânico."
+    },
+    {
+      "category": "Educação em Saúde e Exercício Clínico",
+      "url": "https://images.pexels.com/photos/20860590/pexels-photo-20860590.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Fisioterapeuta auxiliando paciente com sorriso e técnica em exercício de extensão e reabilitação."
+    }
+  ],
+  "motion_and_interaction_guide": {
+    "library": "framer-motion",
+    "principles": [
+      "Staggered line reveal for hero text (transition 0.6s ease-out)",
+      "Interactive SVG vertebral model that dynamically curves and emits breath pulses on hover",
+      "Gentle micro-lift on service cards (y: -4px) with subtle teal border transition",
+      "Timeline milestones with progressive scroll trigger markers",
+      "Smooth accordion and dialog interactions using Radix UI primitives"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Build a single-page high-end institutional website in Brazilian Portuguese for Dr. Francisco Rafael Pinheiro Dantas.",
+    "Preserve and prominently highlight all clinical and academic credentials: Einstein-SP ICU specialist, SOBRATI Master, ESP/CE Health Management & Family Health, NASF 5-year tenure, Municipal COVID ICU, Simulation Center Manager, Uninassau faculty.",
+    "Adopt the porcelain-clean light aesthetic requested by user with colors sampled from the provided logo (#184E60 deep petrol, #27948B vibrant teal green, soft #E8F4F2 accents).",
+    "Integrate the official logo URL in the sticky header and hero emblem.",
+    "Include an interactive assessment helper (triage widget) that lets users calculate which service fits their condition and auto-populates the WhatsApp message.",
+    "Provide a floating WhatsApp button with pulsing beacon indicator and quick trigger modal.",
+    "Ensure 100% of interactive elements have data-testid attributes for testing."
+  ]
+}
