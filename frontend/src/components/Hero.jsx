@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
-import { ArrowDownRight, CalendarCheck, ShieldCheck } from "lucide-react";
+import { ArrowDownRight, CalendarCheck } from "lucide-react";
 import { HERO_IMAGE, WHATSAPP_LINK, scrollToId } from "@/lib/site";
 
 const HERO_LINES = [
@@ -48,7 +48,6 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
   const yImg = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const yGlass = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -188,42 +187,6 @@ const Hero = () => {
                   />
                 </motion.div>
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 via-transparent to-transparent" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              style={{ y: yGlass }}
-              className="absolute -left-4 top-14 sm:-left-10"
-            >
-              <div
-                data-testid="hero-glass-card-credentials"
-                className="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/80 px-4 py-3 shadow-[0_20px_50px_rgba(24,78,96,0.14)] backdrop-blur-xl"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-teallight">
-                  <ShieldCheck className="h-4 w-4 text-brand-teal" />
-                </span>
-                <div>
-                  <p className="text-xs font-bold text-brand-ink">Fisioterapia em UTI Adulto</p>
-                  <p className="text-[11px] text-brand-muted">Especialista Albert Einstein-SP</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              style={{ y: yGlass }}
-              className="absolute -right-3 bottom-10 sm:-right-8"
-            >
-              <div
-                data-testid="hero-glass-card-master"
-                className="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/80 px-4 py-3 shadow-[0_20px_50px_rgba(24,78,96,0.14)] backdrop-blur-xl"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-teal/15 font-serif text-base font-semibold text-brand-petrol">
-                  M
-                </span>
-                <div>
-                  <p className="text-xs font-bold text-brand-ink">Mestre em Terapia Intensiva</p>
-                  <p className="text-[11px] text-brand-muted">SOBRATI</p>
-                </div>
               </div>
             </motion.div>
           </motion.div>
