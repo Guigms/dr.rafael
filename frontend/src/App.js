@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "@/App.css";
 import AssistencialPage from "@/components/AssistencialPage";
 import EduPage from "@/components/edu/EduPage";
+import LogoIntro from "@/components/LogoIntro";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 class ErrorBoundary extends React.Component {
@@ -63,6 +64,7 @@ function App() {
     <BrowserRouter>
       <ErrorBoundary>
         <ScrollToTop />
+        <LogoIntro />
         <div className="grain relative bg-brand-paper">
           <Routes>
             <Route path="/" element={<AssistencialPage />} />
