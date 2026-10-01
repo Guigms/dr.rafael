@@ -4,29 +4,48 @@ import { AnimatePresence, motion } from "framer-motion";
 import logo from "@/assets/logo.png";
 import EduSplash from "@/components/edu/EduSplash";
 
+const DURATION = { edu: 3000, clinical: 2300 };
+
+const lockScroll = (lock) => {
+  document.body.style.overflow = lock ? "hidden" : "";
+  const lenis = window.__lenis;
+  if (lenis) {
+    if (lock) lenis.stop();
+    else lenis.start();
+  }
+};
+
 const LogoIntro = () => {
-  const [show, setShow] = useState(true);
   const { pathname } = useLocation();
-  const isEdu = pathname.startsWith("/edu");
-  const duration = isEdu ? 3000 : 2300;
+  const area = pathname.startsWith("/edu") ? "edu" : "clinical";
+  // `playing` = area whose intro is currently on screen (null = none).
+  // Re-triggered every time the user ENTERS an area (initial load or
+  // client-side navigation between "/" and "/edu").
+  const [playing, setPlaying] = useState(area);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    const t = setTimeout(() => setShow(false), duration);
+    setPlaying(area);
+    lockScroll(true);
+    const t = setTimeout(() => setPlaying(null), DURATION[area]);
     return () => {
       clearTimeout(t);
-      document.body.style.overflow = "";
     };
-  }, [duration]);
+  }, [area]);
 
   useEffect(() => {
-    if (!show) document.body.style.overflow = "";
-  }, [show]);
+    if (!playing) lockScroll(false);
+  }, [playing]);
+
+  useEffect(() => () => lockScroll(false), []);
+
+  const show = playing !== null;
+  const isEdu = playing === "edu";
 
   return (
     <AnimatePresence>
       {show && (
         <motion.div
+          key={playing}
           data-testid="logo-intro"
           className={`fixed inset-0 z-[100] flex items-center justify-center ${isEdu ? "bg-brand-deep" : "bg-[#FBFBF9]"}`}
           initial={{ y: 0 }}
