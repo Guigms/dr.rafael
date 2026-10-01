@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "@/assets/logo.png";
+import EduSplash from "@/components/edu/EduSplash";
 
 const LogoIntro = () => {
   const [show, setShow] = useState(true);
+  const { pathname } = useLocation();
+  const isEdu = pathname.startsWith("/edu");
+  const duration = isEdu ? 3000 : 2300;
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const t = setTimeout(() => setShow(false), 2300);
+    const t = setTimeout(() => setShow(false), duration);
     return () => {
       clearTimeout(t);
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [duration]);
 
   useEffect(() => {
     if (!show) document.body.style.overflow = "";
@@ -23,14 +28,26 @@ const LogoIntro = () => {
       {show && (
         <motion.div
           data-testid="logo-intro"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#FBFBF9]"
+          className={`fixed inset-0 z-[100] flex items-center justify-center ${isEdu ? "bg-brand-deep" : "bg-[#FBFBF9]"}`}
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
         >
-          <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand-teallight blur-3xl opacity-70" />
-          <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-brand-teal/10 blur-3xl" />
+          {isEdu ? (
+            <>
+              <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand-teal/25 blur-3xl" />
+              <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-brand-glow/15 blur-3xl" />
+            </>
+          ) : (
+            <>
+              <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand-teallight blur-3xl opacity-70" />
+              <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-brand-teal/10 blur-3xl" />
+            </>
+          )}
 
+          {isEdu ? (
+            <EduSplash />
+          ) : (
           <div className="relative flex flex-col items-center px-6">
             <div className="overflow-hidden">
               <motion.div
@@ -76,6 +93,7 @@ const LogoIntro = () => {
               Movimento • Saúde • Qualidade de Vida
             </motion.p>
           </div>
+          )}
 
           <motion.div
             initial={{ opacity: 1 }}
