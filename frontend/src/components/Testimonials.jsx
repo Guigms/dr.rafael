@@ -1,14 +1,6 @@
-import { Reveal, Eyebrow } from "@/components/Reveal";
 import { Star, Quote } from "lucide-react";
+import { Reveal, Eyebrow } from "@/components/Reveal";
 import { TESTIMONIALS } from "@/lib/site";
-
-const Stars = ({ testId }) => (
-  <div className="flex gap-1" data-testid={testId}>
-    {Array.from({ length: 5 }).map((_, i) => (
-      <Star key={i} className="h-3.5 w-3.5 fill-brand-teal text-brand-teal" />
-    ))}
-  </div>
-);
 
 const Testimonials = () => {
   const [featured, ...rest] = TESTIMONIALS;
@@ -25,12 +17,10 @@ const Testimonials = () => {
           <div className="max-w-3xl">
             <Eyebrow>Depoimentos</Eyebrow>
             <h2 className="mt-6 font-serif text-2xl font-normal leading-[1.15] tracking-tight text-brand-ink sm:text-3xl lg:text-4xl">
-              A confiança de quem já
-              <em className="not-italic text-brand-teal"> recuperou o movimento</em>
+              O que dizem os pacientes
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-brand-muted">
-              Avaliações de pacientes e instituições acompanhadas pelo Dr.
-              Rafael ao longo da trajetória clínica e acadêmica.
+            <p className="mt-5 text-sm text-brand-muted">
+              Depoimentos publicados mediante autorização dos pacientes.
             </p>
           </div>
         </Reveal>
@@ -43,7 +33,11 @@ const Testimonials = () => {
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <Stars testId="testimonial-stars-featured" />
+                  <div className="flex gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-brand-teal text-brand-teal" />
+                    ))}
+                  </div>
                   <Quote className="h-8 w-8 text-brand-teal/25" />
                 </div>
                 <blockquote className="mt-6 font-serif text-xl font-light leading-relaxed text-brand-ink sm:text-2xl">
@@ -70,7 +64,11 @@ const Testimonials = () => {
                   className="flex h-full flex-col justify-between rounded-3xl border hairline bg-white p-7 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(24,78,96,0.09)]"
                 >
                   <div>
-                    <Stars testId={`testimonial-stars-${t.id}`} />
+                    <div className="flex gap-1">
+                      {Array.from({ length: 5 }).map((_, s) => (
+                        <Star key={s} className="h-3.5 w-3.5 fill-brand-teal text-brand-teal" />
+                      ))}
+                    </div>
                     <blockquote className="mt-4 text-sm leading-relaxed text-brand-muted sm:text-base">
                       “{t.quote}”
                     </blockquote>

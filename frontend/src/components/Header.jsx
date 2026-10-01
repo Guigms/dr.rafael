@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { CalendarCheck, Menu, X } from "lucide-react";
+import { CalendarCheck, GraduationCap, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { NAV_LINKS, WHATSAPP_LINK, scrollToId } from "@/lib/site";
 
@@ -29,21 +30,17 @@ const Header = () => {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-[76px] flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-[76px] flex items-center justify-between gap-4">
         <button
           data-testid="header-logo-button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center"
+          className="flex items-center shrink-0"
           aria-label="Ir para o topo"
         >
-          <img
-            src={logo}
-            alt="Dr Rafael Dantas — Fisioterapia"
-            className="h-11 w-auto mix-blend-multiply"
-          />
+          <img src={logo} alt="Dr. Rafael Dantas — Atendimento e Consultoria em Fisioterapia" className="h-12 w-auto mix-blend-multiply" />
         </button>
 
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((l) => (
             <button
               key={l.id}
@@ -56,7 +53,15 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            data-testid="header-link-edusaude"
+            to="/edu"
+            className="inline-flex items-center gap-2 rounded-full border hairline bg-white/70 px-4 py-2.5 text-sm font-semibold text-brand-teal transition-all duration-300 hover:border-brand-teal"
+          >
+            <GraduationCap className="h-4 w-4" />
+            EDUSAUDE
+          </Link>
           <a
             data-testid="header-cta-whatsapp"
             href={WHATSAPP_LINK}
@@ -65,12 +70,12 @@ const Header = () => {
             className="group inline-flex items-center gap-2 rounded-full bg-brand-petrol px-5 py-2.5 text-sm font-semibold text-[#FBFBF9] transition-all duration-300 hover:bg-brand-teal hover:shadow-[0_12px_30px_rgba(39,148,139,0.35)]"
           >
             <CalendarCheck className="h-4 w-4 transition-transform duration-300 group-hover:rotate-6" />
-            Agendar consulta
+            Agendar
           </a>
         </div>
 
         <button
-          className="md:hidden p-2 text-brand-petrol"
+          className="lg:hidden p-2 text-brand-petrol"
           data-testid="header-mobile-toggle"
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menu"
@@ -86,7 +91,7 @@ const Header = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden bg-[#FBFBF9]/95 backdrop-blur-xl border-b hairline"
+            className="lg:hidden overflow-hidden bg-[#FBFBF9]/95 backdrop-blur-xl border-b hairline"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
               {NAV_LINKS.map((l) => (
@@ -99,6 +104,15 @@ const Header = () => {
                   {l.label}
                 </button>
               ))}
+              <Link
+                data-testid="header-mobile-link-edusaude"
+                to="/edu"
+                className="inline-flex items-center gap-2 text-left text-base font-semibold text-brand-teal"
+                onClick={() => setOpen(false)}
+              >
+                <GraduationCap className="h-4 w-4" />
+                Área Educacional — EDUSAUDE
+              </Link>
               <a
                 data-testid="header-mobile-cta-whatsapp"
                 href={WHATSAPP_LINK}
@@ -107,7 +121,7 @@ const Header = () => {
                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-brand-petrol px-5 py-3 text-sm font-semibold text-[#FBFBF9]"
               >
                 <CalendarCheck className="h-4 w-4" />
-                Agendar consulta
+                Agendar avaliação
               </a>
             </div>
           </motion.div>

@@ -56,6 +56,20 @@ async def create_contact(input: ContactMessageCreate):
     return {"ok": True, "id": str(result.inserted_id)}
 
 
+@api_router.post("/edu-lead")
+async def create_edu_lead(input: dict):
+    product = str(input.get("product", "")).strip()
+    if not product:
+        raise HTTPException(status_code=400, detail="Produto é obrigatório.")
+    doc = {
+        "product": product,
+        "price": str(input.get("price", "")),
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    result = await db.edu_leads.insert_one(doc)
+    return {"ok": True, "id": str(result.inserted_id)}
+
+
 @api_router.get("/contact")
 async def list_contacts():
     docs = await db.contact_messages.find({}, {"_id": 0}).sort(

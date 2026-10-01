@@ -1,18 +1,10 @@
 import React, { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "@/components/ui/sonner";
 import "@/App.css";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import Manifesto from "@/components/Manifesto";
-import Services from "@/components/Services";
-import Trajectory from "@/components/Trajectory";
-import Testimonials from "@/components/Testimonials";
-import Triage from "@/components/Triage";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import AssistencialPage from "@/components/AssistencialPage";
+import EduPage from "@/components/edu/EduPage";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 class ErrorBoundary extends React.Component {
@@ -38,6 +30,18 @@ class ErrorBoundary extends React.Component {
   }
 }
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (window.__lenis) {
+      window.__lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
+  return null;
+};
+
 function App() {
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });
@@ -58,19 +62,13 @@ function App() {
   return (
     <BrowserRouter>
       <ErrorBoundary>
+        <ScrollToTop />
         <div className="grain relative bg-brand-paper">
-          <Header />
-          <main>
-            <Hero />
-            <Marquee />
-            <Manifesto />
-            <Services />
-            <Trajectory />
-            <Testimonials />
-            <Triage />
-            <Contact />
-          </main>
-          <Footer />
+          <Routes>
+            <Route path="/" element={<AssistencialPage />} />
+            <Route path="/edu" element={<EduPage />} />
+            <Route path="*" element={<AssistencialPage />} />
+          </Routes>
           <WhatsAppFloat />
           <Toaster position="bottom-left" richColors />
         </div>
