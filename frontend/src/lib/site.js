@@ -216,24 +216,24 @@ export const EXTRA_SERVICES = [
 export const TESTIMONIALS = [
   {
     id: "ariane",
-    quote: "Depois da alta da UTI, eu não conseguia subir um lance de escada sem me perder no fôlego. O Dr. Rafael montou um plano que me devolveu o ar e a confiança.",
+    quote: "Tive uma lesão na minha medula durante uma cirurgia, e precisei realizar fisioterapia, onde conheci o doutor Rafael onde em 3 meses ja comecei dar meus primeiros passos. Hoje tenho meus movimentos graças a ajuda do doutor Rafael.",
     name: "Ariane",
-    context: "Paciente — Reabilitação respiratória",
+    context: "Paciente",
     initials: "A",
   },
   {
-    id: "imaculada",
-    quote: "O cuidado com minha mãe em casa mudou tudo: sem desgaste de deslocamento e sempre explicando cada etapa para a família. Profissionalismo e carinho no mesmo atendimento.",
-    name: "Imaculada",
-    context: "Familiar de paciente — atendimento domiciliar",
-    initials: "I",
+    id: "norma",
+    quote: "Fui paciente do doutor Rafael, passei 6 meses realizando fisioterapia, tive melhora muito rápida com relação a minha situação!Eu indico totalmente o doutor Rafael!",
+    name: "Norma",
+    context: "Paciente — Atendimento domiciliar",
+    initials: "N",
   },
   {
-    id: "neuro",
-    quote: "Após o AVC, cada pequeno progresso era comemorado. Hoje volto a fazer minhas atividades com muito mais segurança e equilíbrio.",
-    name: "J. S.",
-    context: "Paciente — Reabilitação neurofuncional",
-    initials: "JS",
+    id: "gms",
+    quote: "Tinha fortes dores nos ombros, logo após a primeira sessão de fisioterapia com o Dr. Rafael, senti uma melhora significativa. Ele é um profissional muito atencioso e competente, que realmente se preocupa com o bem-estar do paciente.",
+    name: "Guilherme",
+    context: "Paciente",
+    initials: "G",
   },
 ];
 
