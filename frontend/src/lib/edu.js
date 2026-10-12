@@ -3,8 +3,8 @@ export const EDU = {
   slogan: "Conhecimento que transforma a prática em saúde.",
   headline: "Aprenda mais. Pratique melhor. Evolua sua performance na saúde.",
   sub: "Cursos, apostilas, e-books, materiais de estudo e conteúdos educacionais desenvolvidos para estudantes e profissionais da área da saúde, mentorias VIP para estudantes e profissionais da saúde.",
-  heroImage: "https://images.unsplash.com/photo-1660128358414-eab8a8772b64?crop=entropy&cs=srgb&fm=jpg&q=85",
-  heroImage2: "https://images.unsplash.com/photo-1691935444011-6dc287f96586?crop=entropy&cs=srgb&fm=jpg&q=85",
+  // Imagem de destaque de estudante de saúde com jaleco e livros/estudos
+  heroImage: "/fisio-estuda.jpg",
 };
 
 export const EDU_NAV = [
@@ -35,47 +35,34 @@ export const EDU_AUDIENCES = [
 ];
 
 export const EDU_CATEGORIES = [
-  {
-    id: "apostilas",
-    icon: "BookOpen",
-    title: "Apostilas",
-    text: "Materiais didáticos organizados para facilitar o aprendizado e a revisão ao longo do semestre das disciplinas do ciclo básico: anatomia humana, fisiologia, neuroanatomia, parasitologia, patologia, bioquímica humana e imunologia. Materiais ilustrativos, fundamentados na aplicação clínica e em provas como ENAMED, ENADE e residências médicas e multiprofissionais.",
-  },
-  {
-    id: "cursos",
-    icon: "MonitorPlay",
-    title: "Cursos Livres",
-    text: "Cursos online voltados para capacitação e atualização profissional e também formação acadêmica.",
-  },
-  {
-    id: "ebooks",
-    icon: "Tablet",
-    title: "E-books",
-    text: "Conteúdos completos para estudo em formato digital, organizados para facilitar o aprendizado e a revisão das disciplinas do ciclo básico, com aplicação clínica e preparação para exames nacionais.",
-  },
+  
   {
     id: "questoes",
     icon: "FileQuestion",
     title: "Banco de Questões",
     text: "Questões para revisão, preparação para provas e consolidação do conhecimento das disciplinas do ciclo básico da área da saúde.",
+    buyUrl: "",
   },
   {
     id: "mapas",
     icon: "Brain",
     title: "Mapas Mentais",
     text: "Materiais visuais para facilitar a compreensão e memorização.",
+    buyUrl: "",
   },
   {
     id: "casos",
     icon: "ClipboardList",
     title: "Casos Clínicos",
     text: "Situações práticas para estimular o raciocínio clínico.",
+    buyUrl: "",
   },
   {
     id: "kits",
     icon: "Package",
     title: "Kits Educacionais",
     text: "Combinações de cursos + apostilas + materiais complementares.",
+    buyUrl: "",
   },
 ];
 
@@ -119,6 +106,7 @@ export const EDU_PRODUCTS = [
     title: "Gasometria Arterial Descomplicada: Do Resultado ao Raciocínio Clínico",
     hours: "20h",
     impact: "Aprenda a interpretar a gasometria arterial de maneira sistematizada, prática e descomplicada.",
+    buyUrl: "https://gex.goexplosion.com/link/checkout?utm=desvendando-a-gasometria-arterial-",
     learn: LEARN_LIST,
     includes: INCLUDES_LIST,
     forWho: "Indicado para estudantes e profissionais de Medicina, Fisioterapia, Enfermagem e demais profissionais da saúde interessados no tema.",
@@ -132,16 +120,18 @@ export const EDU_PRODUCTS = [
       ["Requisitos", "Nenhum pré-requisito"],
     ],
     oldPrice: "R$ 109,80",
-    price: "R$ 79,50",
+    price: "R$ 59,90",
     areas: ["Fisioterapia", "Medicina", "Enfermagem", "Terapia Intensiva", "Pneumologia", "Exames laboratoriais"],
     level: "Básico / Intermediário",
     public: ["Estudante", "Profissional"],
   },
   {
     id: "exames",
-    title: "Exames Laboratoriais para Fisioterapeutas",
+    // NOME ATUALIZADO
+    title: "Exames Laboratoriais na Fisioterapia: Do Resultado à Conduta",
     hours: "20h",
-    impact: "Aprenda a interpretar exames laboratoriais de maneira sistematizada, prática e descomplicada.",
+    impact: "Aprenda a interpretar exames laboratoriais de maneira sistematizada, prática e descomplicada aplicada à conduta fisioterapêutica.",
+    buyUrl: "https://pay.hotmart.com/L107745336B",
     learn: LEARN_LIST,
     includes: INCLUDES_LIST,
     forWho: "Indicado para estudantes e profissionais de Fisioterapia.",
@@ -155,20 +145,132 @@ export const EDU_PRODUCTS = [
       ["Requisitos", "Nenhum pré-requisito"],
     ],
     oldPrice: "R$ 109,80",
-    price: "R$ 79,50",
+    price: "R$ 74,90",
     areas: ["Fisioterapia", "Exames laboratoriais", "Terapia Intensiva"],
     level: "Básico / Intermediário",
     public: ["Estudante", "Profissional"],
   },
+  {
+    id: "fisioterapia-hospitalar",
+    // NOVO CURSO ADICIONADO
+    title: "Fisioterapia Hospitalar — Guia Prático e Descomplicado",
+    hours: "30h",
+    impact: "Domine a rotina assistencial, avaliação e condutas fisioterapêuticas no ambiente hospitalar e enfermarias.",
+    buyUrl: "https://gex.goexplosion.com/link/checkout?utm=fisioterapia-hospitalar-guia-pratico-e-descomplicado-",
+    learn: LEARN_LIST,
+    includes: INCLUDES_LIST,
+    forWho: "Indicado para acadêmicos de Fisioterapia, estagiários e fisioterapeutas recém-formados que atuam ou desejam atuar no contexto hospitalar.",
+    info: [
+      ["Modalidade", "Online (EAD)"],
+      ["Carga horária", "30h"],
+      ["Formato", "Curso online + materiais digitais"],
+      ["Acesso", "Após confirmação do pagamento"],
+      ["Certificação", "Sim, quando aplicável"],
+      ["Plataforma", "Navegador e celular"],
+      ["Requisitos", "Nenhum pré-requisito"],
+    ],
+    oldPrice: "R$ 149,80",
+    price: "R$ 79,90",
+    areas: ["Fisioterapia", "Hospitalar", "Enfermaria", "Avaliando o Paciente Crítico"],
+    level: "Básico / Intermediário",
+    public: ["Estudante", "Profissional"],
+  },
+  {
+    id: "fisio-rumo-residencia",
+    title: "Fisio Rumo à Residência",
+    hours: "E-book",
+    impact: "Guia completo e direcionado para aprovação nos processos seletivos de residência em Fisioterapia.",
+    // LINK DE VENDA DA HOTMART:
+    buyUrl: "https://go.hotmart.com/E107966243Y", 
+    learn: [
+      "Conteúdos mais cobrados nas provas de residência",
+      "Resolução e raciocínio de questões",
+      "Estratégia de estudo direcionada",
+      "Revisão rápida dos principais pontos clínicos",
+    ],
+    includes: [
+      "E-book digital completo (PDF)",
+      "Acesso imediato no e-mail",
+      "Material 100% otimizado para leitura no celular ou tablet",
+    ],
+    forWho: "Indicado para acadêmicos dos últimos semestres e fisioterapeutas graduados que buscam a aprovação na Residência Multiprofissional.",
+    info: [
+      ["Modalidade", "Digital (E-book)"],
+      ["Formato", "PDF / Download imediato"],
+      ["Acesso", "Imediato após confirmação"],
+      ["Plataforma", "Hotmart"],
+    ],
+    oldPrice: "R$ 97,00",
+    price: "R$ 62,50", // Ajuste o preço conforme cadastrado na Hotmart
+    areas: ["Fisioterapia", "Residência", "Provas & Seleções"],
+    level: "Preparatório",
+    public: ["Estudante", "Profissional"],
+  },
+  {
+    id: "atlas-neuroanatomia",
+    title: "Atlas Visual: Neuroanatomia Funcional e Clínica — Ciclo Básico",
+    hours: "E-book",
+    impact: "Compreenda a estrutura e o funcionamento do sistema nervoso de forma visual, descomplicada e aplicada à prática clínica.",
+    buyUrl: "https://go.hotmart.com/Q107973398M",
+    learn: [
+      "Anatomia e organização do Sistema Nervoso Central e Periférico",
+      "Vias motoras e sensitivas com esquemas visuais",
+      "Correlação neuroanatômica com casos clínicos do cotidiano",
+      "Didática facilitada para revisão e provas do ciclo básico",
+    ],
+    includes: [
+      "E-book digital em alta resolução (PDF)",
+      "Acesso imediato via Hotmart",
+      "Ilustrações e esquemas práticos para fixação",
+    ],
+    forWho: "Estudantes do ciclo básico da área da saúde (Medicina, Fisioterapia, Enfermagem, Psicologia) e profissionais que buscam revisar a neuroanatomia.",
+    info: [
+      ["Modalidade", "Digital (E-book)"],
+      ["Formato", "PDF / Download imediato"],
+      ["Acesso", "Imediato após confirmação"],
+      ["Plataforma", "Hotmart"],
+    ],
+    oldPrice: "R$ 89,90",
+    price: "R$ 61,90", // Ajuste o valor conforme cadastrado na Hotmart
+    areas: ["Neuroanatomia", "Ciclo Básico", "Fisioterapia", "Medicina"],
+    level: "Básico / Intermediário",
+    public: ["Estudante", "Profissional"],
+  },
+  {
+    id: "atlas-trauma",
+    title: "Atlas Visual de Trauma",
+    hours: "Digital (E-book)",
+    impact: "Guia prático e ilustrado sobre atendimento, identificação e condutas nas principais emergências e lesões traumáticas.",
+    buyUrl: "https://go.hotmart.com/J107974648I",
+    learn: [
+      "Mecanismos de trauma e avaliação inicial sistematizada",
+      "Abordagem de traumas ortopédicos, torácicos e abdominais",
+      "Raciocínio clínico e tomada de decisão em urgência/emergência",
+      "Esquemas visuais focados em retenção rápida de conteúdo",
+    ],
+    includes: [
+      "Acesso completo ao material na plataforma",
+      "Estudo no seu próprio ritmo",
+      "Conteúdo 100% focado na prática hospitalar e pré-hospitalar",
+    ],
+    forWho: "Estudantes e profissionais da saúde que atuam ou desejam atuar em pronto-socorro, UTI, emergências e atendimento pré-hospitalar.",
+    info: [
+      ["Modalidade", "Digital (E-book)"],
+      ["Formato", "Conteúdo Digital"],
+      ["Acesso", "Imediato após confirmação"],
+      ["Plataforma", "Hotmart"],
+    ],
+    oldPrice: "R$ 79,90",
+    price: "R$ 37,80", // Ajuste o valor conforme cadastrado na Hotmart
+    areas: ["Trauma", "Urgência e Emergência", "Hospitalar", "Fisioterapia", "Medicina", "Enfermagem"],
+    level: "Intermediário",
+    public: ["Estudante", "Profissional"],
+  },
+
 ];
 
 export const EDU_COMING_SOON = [
-  { id: "anatomia", title: "Anatomia Humana", type: "Apostila / E-book", areas: ["Fisioterapia", "Medicina", "Enfermagem"], level: "Básico", public: ["Estudante"] },
-  { id: "fisiologia", title: "Fisiologia Humana", type: "Apostila / E-book", areas: ["Fisioterapia", "Medicina", "Enfermagem"], level: "Básico", public: ["Estudante"] },
-  { id: "neuroanatomia", title: "Neuroanatomia", type: "Apostila / E-book", areas: ["Fisioterapia", "Medicina"], level: "Intermediário", public: ["Estudante"] },
-  { id: "patologia", title: "Patologia", type: "Apostila / E-book", areas: ["Fisioterapia", "Medicina", "Enfermagem"], level: "Básico", public: ["Estudante"] },
-  { id: "bioquimica", title: "Bioquímica Humana", type: "Apostila / E-book", areas: ["Fisioterapia", "Medicina", "Enfermagem"], level: "Básico", public: ["Estudante"] },
-  { id: "imunologia", title: "Imunologia", type: "Apostila / E-book", areas: ["Fisioterapia", "Medicina", "Enfermagem"], level: "Básico", public: ["Estudante"] },
+
 ];
 
 export const EDU_COMBOS = [
@@ -191,12 +293,15 @@ export const EDU_ABOUT = {
 
 export const EDU_AUTHOR = {
   name: "Dr. Rafael Dantas",
-  role: "Fisioterapeuta",
+  role: "Fisioterapeuta e Acadêmico de Medicina",
   bio: [
     "14 anos de experiência em fisioterapia assistencial no segmento hospitalar, UTI, clínica de reabilitação funcional e atendimentos domiciliares.",
-    "Acadêmico de Medicina — 2º Período.",
-    "11 anos de docência no ensino da área da saúde nos níveis técnico e superior, com foco nas disciplinas do ciclo básico: anatomia humana, fisiologia humana, neuroanatomia, anatomia palpatória e anatomia seccional — nos cursos técnicos de radiologia e enfermagem, massoterapia, fisioterapia, psicologia, medicina, farmácia, nutrição, terapia ocupacional, estética e cosmetologia e fonoaudiologia.",
-    "Especialista em Fisioterapia Intensiva Adulto; Especialista em Fisioterapia Neurofuncional; Mestre em Terapia Intensiva Adulto.",
+    "Acadêmico de Medicina — UNINASSAU Maracanaú.",
+    "Coordenador do curso de Fisioterapia — UNINASSAU Maracanaú.",
+    "Especialista em Fisioterapia Intensiva Adulto (Hospital Israelita Albert Einstein - SP) e Mestre em Terapia Intensiva Adulto (SOBRATI - SP).",
+    "Especialista em Saúde da Família e Comunidade — ESP-CE.",
+    "Especialista em Gestão para Resultados — ESP-CE.",
+    "Docente universitário no ensino da área da saúde com foco em disciplinas do ciclo básico e vivência clínica.",
   ],
 };
 

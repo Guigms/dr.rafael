@@ -1,95 +1,87 @@
-import { Star, Quote } from "lucide-react";
-import { Reveal, Eyebrow } from "@/components/Reveal";
+import React from "react";
 import { TESTIMONIALS } from "@/lib/site";
+import { Reveal } from "@/components/Reveal";
+import { Quote } from "lucide-react";
 
-const Testimonials = () => {
-  const [featured, ...rest] = TESTIMONIALS;
-
+export default function Testimonials() {
   return (
-    <section
-      id="depoimentos"
-      data-testid="testimonials-section"
-      className="relative overflow-hidden bg-[#F4F7F6] py-24 lg:py-32"
-    >
-      <div className="pointer-events-none absolute -left-40 bottom-0 h-[380px] w-[380px] rounded-full bg-brand-teal/10 blur-3xl" />
+    <section id="depoimentos" className="py-20 bg-slate-50 dark:bg-slate-900/40">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <Reveal>
-          <div className="max-w-3xl">
-            <Eyebrow>Depoimentos</Eyebrow>
-            <h2 className="mt-6 font-serif text-2xl font-normal leading-[1.15] tracking-tight text-brand-ink sm:text-3xl lg:text-4xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-100 dark:bg-emerald-950/50 px-3.5 py-1.5 rounded-full">
+              Relatos Reais
+            </span>
+            <h2 className="mt-4 font-serif text-3xl font-medium tracking-tight sm:text-4xl text-slate-900 dark:text-white">
               O que dizem os pacientes
             </h2>
-            <p className="mt-5 text-sm text-brand-muted">
-              Depoimentos publicados mediante autorização dos pacientes.
+            <p className="mt-3 text-slate-600 dark:text-slate-300 text-base">
+              Conheça as histórias de quem transformou a sua qualidade de vida com a fisioterapia.
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7">
-            <figure
-              data-testid={`testimonial-card-${featured.id}`}
-              className="flex h-full flex-col justify-between rounded-3xl border hairline bg-white p-8 shadow-[0_24px_60px_rgba(24,78,96,0.07)] sm:p-10"
-            >
-              <div>
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-brand-teal text-brand-teal" />
-                    ))}
+        <div className="grid gap-8 md:grid-cols-3">
+          {TESTIMONIALS.map((t, index) => (
+            <Reveal key={t.id} delay={0.1 * index}>
+              <div className="flex flex-col h-full overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm hover:shadow-md transition-all duration-300 dark:bg-slate-800 dark:border-slate-700">
+                
+                {/* Se houver vídeo MP4 Local */}
+                {t.video && (
+                  <div className="relative w-full aspect-[9/16] bg-black rounded-t-3xl overflow-hidden max-h-[380px]">
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster={t.poster || ""}
+                      className="w-full h-full object-cover"
+                    >
+                      <source src={t.video} type="video/mp4" />
+                      Seu navegador não suporta a exibição deste vídeo.
+                    </video>
                   </div>
-                  <Quote className="h-8 w-8 text-brand-teal/25" />
-                </div>
-                <blockquote className="mt-6 font-serif text-xl font-light leading-relaxed text-brand-ink sm:text-2xl">
-                  “{featured.quote}”
-                </blockquote>
-              </div>
-              <figcaption className="mt-8 flex items-center gap-4 border-t hairline pt-6">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-teallight font-serif text-lg font-semibold text-brand-petrol">
-                  {featured.initials}
-                </span>
-                <div>
-                  <p className="text-sm font-bold text-brand-ink">{featured.name}</p>
-                  <p className="text-xs text-brand-muted">{featured.context}</p>
-                </div>
-              </figcaption>
-            </figure>
-          </Reveal>
+                )}
 
-          <div className="flex flex-col gap-6 lg:col-span-5">
-            {rest.map((t, i) => (
-              <Reveal key={t.id} delay={0.08 * (i + 1)} className="flex-1">
-                <figure
-                  data-testid={`testimonial-card-${t.id}`}
-                  className="flex h-full flex-col justify-between rounded-3xl border hairline bg-white p-7 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(24,78,96,0.09)]"
-                >
-                  <div>
-                    <div className="flex gap-1">
-                      {Array.from({ length: 5 }).map((_, s) => (
-                        <Star key={s} className="h-3.5 w-3.5 fill-brand-teal text-brand-teal" />
-                      ))}
-                    </div>
-                    <blockquote className="mt-4 text-sm leading-relaxed text-brand-muted sm:text-base">
-                      “{t.quote}”
-                    </blockquote>
+                {/* Se houver vídeo Embed do YouTube/Vimeo */}
+                {t.embedUrl && !t.video && (
+                  <div className="relative w-full aspect-video bg-black rounded-t-3xl overflow-hidden">
+                    <iframe
+                      src={t.embedUrl}
+                      title={`Depoimento de ${t.name}`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
-                  <figcaption className="mt-5 flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-teallight font-serif text-sm font-semibold text-brand-petrol">
+                )}
+
+                {/* Conteúdo em Texto */}
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <Quote className="h-8 w-8 text-emerald-500/30 mb-3" />
+                  <p className="italic text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-6">
+                    "{t.quote}"
+                  </p>
+                  
+                  <div className="mt-auto flex items-center gap-3 border-t border-slate-100 dark:border-slate-700/60 pt-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 font-bold text-white text-sm">
                       {t.initials}
-                    </span>
-                    <div>
-                      <p className="text-sm font-bold text-brand-ink">{t.name}</p>
-                      <p className="text-xs text-brand-muted">{t.context}</p>
                     </div>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm">
+                        {t.name}
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        {t.context}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Testimonials;
+}

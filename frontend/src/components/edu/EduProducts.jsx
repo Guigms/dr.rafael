@@ -1,5 +1,15 @@
 import React from "react";
-import { CheckCircle2, Microscope, Target, Lightbulb, Smartphone, Rocket, MessageCircle, Flame } from "lucide-react";
+import {
+  CheckCircle2,
+  Microscope,
+  Target,
+  Lightbulb,
+  Smartphone,
+  Rocket,
+  MessageCircle,
+  ShoppingCart,
+  Flame,
+} from "lucide-react";
 import { Reveal, Eyebrow } from "@/components/Reveal";
 import { EDU_COMBOS, EDU_PRODUCTS, EDU_STEPS, EDU_WHY } from "@/lib/edu";
 import { buildWaLink } from "@/lib/site";
@@ -17,7 +27,10 @@ const Why = () => (
           const Icon = WHY_ICONS[w.icon];
           return (
             <Reveal key={w.title} delay={0.05 * i}>
-              <div data-testid={`edu-why-card-${i}`} className="flex h-full flex-col rounded-3xl border hairline bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(24,78,96,0.09)]">
+              <div
+                data-testid={`edu-why-card-${i}`}
+                className="flex h-full flex-col rounded-3xl border hairline bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(24,78,96,0.09)]"
+              >
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teallight">
                   <Icon className="h-5 w-5 text-brand-teal" />
                 </span>
@@ -44,8 +57,13 @@ const HowItWorks = () => (
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {EDU_STEPS.map((s, i) => (
           <Reveal key={s.n} delay={0.05 * i}>
-            <div data-testid={`edu-step-${s.n}`} className="flex h-full items-start gap-4 rounded-3xl border hairline bg-brand-paper p-6">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-teal font-mono text-sm font-bold text-white">{s.n}</span>
+            <div
+              data-testid={`edu-step-${s.n}`}
+              className="flex h-full items-start gap-4 rounded-3xl border hairline bg-brand-paper p-6"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-teal font-mono text-sm font-bold text-white">
+                {s.n}
+              </span>
               <div>
                 <h3 className="text-sm font-bold text-brand-ink">{s.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-brand-muted">{s.text}</p>
@@ -60,6 +78,7 @@ const HowItWorks = () => (
 
 const ProductCard = ({ p, i }) => {
   const waLink = buildWaLink(`Olá, Dr. Rafael! Tenho interesse no curso "${p.title}" da EDUSAUDE.`);
+  const hasExternalBuy = Boolean(p.buyUrl);
 
   return (
     <Reveal delay={0.05 * i}>
@@ -119,25 +138,53 @@ const ProductCard = ({ p, i }) => {
             <strong className="font-semibold">Para quem é?</strong> {p.forWho}
           </p>
 
-          <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t hairline pt-6" style={{ marginTop: "1.5rem" }}>
-            <div>
-              <p className="text-xs text-brand-muted line-through">{p.oldPrice}</p>
-              <p className="font-serif text-3xl font-semibold text-brand-petrol" data-testid={`edu-product-price-${p.id}`}>
-                {p.price}
-              </p>
+          <div className="mt-auto flex flex-col gap-3 border-t hairline pt-6" style={{ marginTop: "1.5rem" }}>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs text-brand-muted line-through">{p.oldPrice}</p>
+                <p
+                  className="font-serif text-3xl font-semibold text-brand-petrol"
+                  data-testid={`edu-product-price-${p.id}`}
+                >
+                  {p.price}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col items-stretch gap-2">
+
+            {hasExternalBuy ? (
+              <>
+                <a
+                  data-testid={`edu-product-buy-${p.id}`}
+                  href={p.buyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-teal px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-petrol"
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  Comprar Curso Agora
+                </a>
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 text-center text-xs font-semibold text-brand-muted transition-colors hover:text-brand-teal pt-1"
+                >
+                  <MessageCircle className="h-3.5 w-3.5 text-brand-teal" />
+                  Dúvidas? Fale pelo WhatsApp
+                </a>
+              </>
+            ) : (
               <a
                 data-testid={`edu-product-buy-${p.id}`}
                 href={waLink}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-teal px-7 py-3.5 text-sm font-bold uppercase tracking-[0.06em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-petrol"
               >
                 <MessageCircle className="h-4 w-4" />
                 Tenho interesse
               </a>
-            </div>
+            )}
           </div>
         </div>
       </article>
@@ -159,22 +206,26 @@ const Combos = () => (
     <div className="mt-8 grid gap-5 lg:grid-cols-3">
       {EDU_COMBOS.map((c, i) => {
         const waComboLink = buildWaLink(`Olá, Dr. Rafael! Tenho interesse no combo "${c.title}" da EDUSAUDE.`);
+        const targetComboUrl = c.buyUrl || waComboLink;
 
         return (
           <Reveal key={c.id} delay={0.05 * i}>
-            <div data-testid={`edu-combo-${c.id}`} className="flex h-full flex-col justify-between rounded-3xl border-2 border-dashed border-brand-teal/40 bg-brand-teallight/40 p-7 transition-all duration-300 hover:border-brand-teal">
+            <div
+              data-testid={`edu-combo-${c.id}`}
+              className="flex h-full flex-col justify-between rounded-3xl border-2 border-dashed border-brand-teal/40 bg-brand-teallight/40 p-7 transition-all duration-300 hover:border-brand-teal"
+            >
               <div>
                 <h4 className="font-serif text-lg font-medium text-brand-petrol">{c.title}</h4>
                 <p className="mt-2 text-sm text-brand-muted">{c.items}</p>
               </div>
               <a
                 data-testid={`edu-combo-cta-${c.id}`}
-                href={waComboLink}
+                href={targetComboUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="mt-6 inline-flex w-fit items-center justify-center gap-2 rounded-full border border-brand-teal px-5 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-brand-teal transition-colors hover:bg-brand-teal hover:text-white"
               >
-                <MessageCircle className="h-3.5 w-3.5" />
+                {c.buyUrl ? <ShoppingCart className="h-3.5 w-3.5" /> : <MessageCircle className="h-3.5 w-3.5" />}
                 Tenho interesse
               </a>
             </div>

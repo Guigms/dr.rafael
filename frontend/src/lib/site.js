@@ -52,8 +52,8 @@ export const HERO = {
   secondaryCta: "Falar pelo WhatsApp",
   images: {
     neuro: "https://images.unsplash.com/photo-1645005513751-e22717a66ae6?crop=entropy&cs=srgb&fm=jpg&q=85",
-    resp: "https://images.pexels.com/photos/32351204/pexels-photo-32351204.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    elderly: "https://images.unsplash.com/photo-1781698334159-d92aaaa0eef6?crop=entropy&cs=srgb&fm=jpg&q=85",
+    resp: "/idoso.jpeg",
+    elderly: "/idoso_atividade.jpg",
   },
 };
 
@@ -69,12 +69,27 @@ export const MARQUEE_ITEMS = [
 export const ABOUT = {
   title: "Conheça o Dr. Rafael Dantas",
   credentials: [
-    "Fisioterapeuta e Acadêmico de Medicina",
-    "CREFITO 170532-F",
-    "Especialista em Fisioterapia Intensiva Adulto",
-    "Especialista em Fisioterapia Neurofuncional",
-    "Mestre em Terapia Intensiva Adulto",
+    "Fisioterapeuta — CREFITO 170532-F",
+    "Especialista em Fisioterapia em Terapia Intensiva Adulto — Hospital Israelita Albert Einstein (SP)",
+    "Mestre em Terapia Intensiva Adulto — SOBRATI (SP)",
+    "Especialista em Saúde da Família e Comunidade — ESP-CE",
+    "Especialista em Gestão para Resultados — ESP-CE",
+    "Acadêmico de Medicina — UNINASSAU Maracanaú",
+    "Coordenador do Curso de Fisioterapia — UNINASSAU Maracanaú",
+    "Professor Universitário dos Cursos da Área da Saúde — UNINASSAU Maracanaú",
   ],
+  areas: [
+    "Fisioterapia Neurofuncional adulto",
+    "Fisioterapia Respiratória adulto e pediátrico",
+    "Fisioterapia em Geriatria (idosos)",
+  ],
+  region: "Região de atendimento em Maracanaú / home care em regiões próximas: Fortaleza, Pacatuba, Maranguape e Caucaia.",
+  text: [
+    "Atendimento fisioterapêutico individualizado, baseado na avaliação clínica e nas necessidades específicas de cada paciente.",
+    "O objetivo é compreender as limitações funcionais de cada pessoa e estabelecer um plano terapêutico adequado, buscando evolução, segurança, autonomia e qualidade de vida.",
+  ],
+  photo: drRafaelPhoto,
+
   areas: [
     "Fisioterapia Neurofuncional adulto",
     "Fisioterapia Respiratória adulto e pediátrico",
@@ -200,16 +215,25 @@ export const DIFFERENTIALS = [
 
 export const EXTRA_SERVICES = [
   {
-    title: "Relatórios de incapacidade funcional",
+    id: "relatorios",
+    title: "Relatórios de Incapacidade Funcional",
     text: "Emissão de relatórios de incapacidades funcionais para benefícios do governo, mediante avaliação fisioterapêutica e diagnóstico de incapacidade funcional.",
+    image: "/laudo.jpeg",
+    icon: "FileText",
   },
   {
-    title: "Consultoria de adaptação ergonômica domiciliar",
+    id: "consultoria",
+    title: "Consultoria de Adaptação Ergonômica Domiciliar",
     text: "Avaliação e consultoria para adaptação do ambiente domiciliar às limitações funcionais do paciente. Mapeamos toda a casa (quarto, banheiro, rotinas de cuidado e mobilidade) e entregamos uma lista de materiais a providenciar e como usá-los — pensando na qualidade do movimento e na prevenção de lesões do paciente e dos cuidadores.",
+    image: "/ergonomia.png",
+    icon: "Home",
   },
   {
-    title: "Treinamento individualizado de cuidadores",
+    id: "cuidadores",
+    title: "Treinamento Individualizado de Cuidadores",
     text: "Treinamento no manejo de transferências (sentar, levantar, deitar), redução de quedas, aspiração de secreção, prevenção de lesões por pressão, trocas de sondas e cateteres e cuidados respiratórios contínuos domiciliares.",
+    image: "/cuidador.jpg",
+    icon: "Users",
   },
 ];
 
@@ -220,6 +244,7 @@ export const TESTIMONIALS = [
     name: "Ariane",
     context: "Paciente",
     initials: "A",
+    video: "/ariane.mp4",
   },
   {
     id: "norma",
@@ -227,6 +252,7 @@ export const TESTIMONIALS = [
     name: "Norma",
     context: "Paciente — Atendimento domiciliar",
     initials: "N",
+    video: "/norma.mp4",
   },
   {
     id: "gms",
