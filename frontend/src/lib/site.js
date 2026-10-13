@@ -52,7 +52,7 @@ export const HERO = {
   secondaryCta: "Falar pelo WhatsApp",
   images: {
     neuro: "https://images.unsplash.com/photo-1645005513751-e22717a66ae6?crop=entropy&cs=srgb&fm=jpg&q=85",
-    resp: "/idoso.jpeg",
+    resp: "https://www.cuidamosjuntos.com.br/sites/default/files/styles/webp/public/2024-01/Idoso%20assoprando%20aparelho%20de%20fisioterapia%20respiratoria%203X.jpg.webp?itok=iGMyG5oj",
     elderly: "/idoso_atividade.jpg",
   },
 };

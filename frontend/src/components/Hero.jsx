@@ -138,7 +138,7 @@ const Hero = () => {
                   transition={{ duration: 1.2, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <img
-                    src="/fisio_idoso.jpg"
+                    src="https://cuidador.truecare.com.br/imagens/agendar-fisioterapia-respiratoria-para-idoso.jpg"
                     alt="Fisioterapia respiratória em atendimento"
                     className="h-[400px] w-full object-cover sm:h-[470px]"
                   />

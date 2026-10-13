@@ -55,7 +55,7 @@ const EduFooter = () => (
             </a>
             <p className="flex items-center gap-3 text-sm text-white/70">
               <Mail className="h-4 w-4" />
-              contato@edusaude.com.br (a definir)
+              rafaeldantas@rafaeldantasfisio.com.br
             </p>
           </div>
           <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-white/45" data-testid="edu-footer-legal">
