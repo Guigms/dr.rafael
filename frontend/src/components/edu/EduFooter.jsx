@@ -1,5 +1,5 @@
 import { Instagram, Mail, MessageCircle } from "lucide-react";
-import { EDU } from "@/lib/edu";
+import { EDU, EDU_CONTACT_EMAIL } from "@/lib/edu";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/site";
 import { scrollToId } from "@/lib/site";
 
@@ -55,7 +55,7 @@ const EduFooter = () => (
             </a>
             <p className="flex items-center gap-3 text-sm text-white/70">
               <Mail className="h-4 w-4" />
-              rafaeldantas@rafaeldantasfisio.com.br
+              {EDU_CONTACT_EMAIL}
             </p>
           </div>
           <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-white/45" data-testid="edu-footer-legal">

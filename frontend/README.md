@@ -68,3 +68,43 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Envio automático do material EDUSAUDE na HostGator
+
+O formulário `/edu` usa `api/material-gratuito.php` para notificar
+`rafaeldantas@rafaeldantasfisio.com.br` e enviar o PDF anexado ao e-mail do
+interessado. O envio é feito pelo SMTP do Titan via PHPMailer. O site não salva
+os cadastros no banco de dados.
+
+### Publicar o site
+
+1. Gere o site com `npm run build`.
+2. No Gerenciador de arquivos da HostGator, envie **o conteúdo** da pasta
+   `frontend/build` para a pasta pública do domínio, normalmente `public_html`.
+   Confira que o PDF, `api/material-gratuito.php` e `api/composer.json` também
+   foram enviados.
+3. No Terminal da HostGator, instale o PHPMailer:
+
+   ```sh
+   cd ~/public_html/api
+   composer install --no-dev --optimize-autoloader
+   ```
+
+### Configurar o SMTP do Titan
+
+Crie `titan-mail-config.php` na pasta da conta **um nível acima de
+`public_html`**. Use `backend/titan-mail-config.example.php` como modelo: copie
+seu conteúdo para o novo arquivo e substitua a senha de exemplo pela senha de
+aplicativo do Titan. O arquivo deve ficar em algo como
+`/home/SEU_USUARIO/titan-mail-config.php`, nunca dentro de `public_html`.
+Restrinja as permissões do arquivo a `600` ou, se a hospedagem exigir acesso
+pelo grupo do servidor web, `640`.
+
+O modelo usa `smtp.titan.email`, porta `587` e TLS. Confirme host, porta,
+criptografia e credenciais nos dados de configuração SMTP da sua conta Titan.
+Não envie a senha pelo chat nem a inclua no código do site.
+
+Se o Terminal da HostGator não oferecer Composer, execute
+`composer install --no-dev --optimize-autoloader` na pasta
+`frontend/public/api` antes do build e envie também a pasta `api/vendor` gerada.
+O domínio precisa oferecer PHP e permitir conexões de saída ao SMTP do Titan.

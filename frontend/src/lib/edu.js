@@ -7,6 +7,8 @@ export const EDU = {
   heroImage: "/fisio-estuda.jpg",
 };
 
+export const EDU_CONTACT_EMAIL = "rafaeldantas@rafaeldantasfisio.com.br";
+
 export const EDU_NAV = [
   { id: "inicio", label: "Início" },
   { id: "cursos", label: "Cursos" },

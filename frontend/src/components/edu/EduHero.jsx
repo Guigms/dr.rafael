@@ -67,6 +67,13 @@ const HeroEdu = () => (
           >
             Conhecer os cursos
           </button>
+          <button
+            data-testid="edu-hero-cta-material-gratuito"
+            onClick={() => scrollToId("material-gratuito")}
+            className="inline-flex items-center gap-2 rounded-full border border-brand-glow/50 px-7 py-4 text-sm font-bold uppercase tracking-[0.06em] text-brand-glow transition-all duration-300 hover:bg-brand-glow/10"
+          >
+            Material gratuito
+          </button>
         </motion.div>
 
         <motion.div
