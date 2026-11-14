@@ -3,12 +3,13 @@ import { ArrowDown, CheckCircle2, FileDown, FileText, LoaderCircle } from "lucid
 
 const PDF_URL = "/Anatomia-clinica-para-fisioterapia.pdf";
 const PDF_FILENAME = "Anatomia-clinica-para-fisioterapia.pdf";
+const WEB3FORMS_ACCESS_KEY = process.env.REACT_APP_WEB3FORMS_ACCESS_KEY?.trim();
+const WEB3FORMS_CC_EMAIL = process.env.REACT_APP_WEB3FORMS_CC_EMAIL?.trim();
 
 const EduFreeMaterial = () => {
   const [lead, setLead] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [materialEmailSent, setMaterialEmailSent] = useState(true);
 
   const downloadMaterial = () => {
     const link = document.createElement("a");
@@ -33,25 +34,37 @@ const EduFreeMaterial = () => {
     setError("");
 
     try {
-      const response = await fetch("/api/material-gratuito.php", {
+      if (!WEB3FORMS_ACCESS_KEY) {
+        throw new Error(
+          "O formulário ainda não está configurado. A chave do Web3Forms precisa ser adicionada pelo responsável do site."
+        );
+      }
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "Novo interessado no material gratuito da EDUSAUDE",
+          from_name: "EDUSAUDE",
+          ...(WEB3FORMS_CC_EMAIL && { ccemail: WEB3FORMS_CC_EMAIL }),
+          message:
+            "A pessoa solicitou acesso ao material gratuito da EDUSAUDE. Autorizou o compartilhamento dos dados para receber o material e registrar o interesse.",
           ...submittedLead,
-          consent: formData.get("consent") === "on",
         }),
       });
-      const result = await response.json().catch(() => ({}));
+      const result = await response.json();
 
-      if (!response.ok || !result.ok) {
+      if (!response.ok || !result.success) {
         throw new Error(
-          result.detail ||
-            "Não foi possível enviar seus dados. Verifique a configuração do PHP na hospedagem e tente novamente."
+          result.message || "Não foi possível enviar seus dados. Tente novamente."
         );
       }
 
       setLead(submittedLead);
-      setMaterialEmailSent(result.material_sent);
       downloadMaterial();
       form.reset();
     } catch (requestError) {
@@ -80,8 +93,9 @@ const EduFreeMaterial = () => {
             Explore a anatomia clínica aplicada à fisioterapia.
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-brand-muted sm:text-base">
-            Baixe gratuitamente o material Anatomia Clínica para Fisioterapia,
-            preparado para apoiar seus estudos e sua formação profissional.
+            Para acessar gratuitamente o material Anatomia Clínica para
+            Fisioterapia, informe seus dados de contato. O responsável poderá
+            falar com você e o PDF ficará disponível para baixar.
           </p>
           <div className="mt-7 flex items-center gap-3 text-sm font-medium text-brand-petrol">
             <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-teal" />
@@ -106,9 +120,8 @@ const EduFreeMaterial = () => {
                 Seus dados foram enviados para a EDUSAUDE.
               </p>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-brand-muted">
-                {materialEmailSent
-                  ? `O PDF também foi enviado para ${lead.email}.`
-                  : `Não foi possível enviar o PDF para ${lead.email}. O download está disponível abaixo.`}
+                O responsável poderá entrar em contato pelo telefone ou e-mail
+                informado. O PDF está disponível para baixar abaixo.
               </p>
               <button
                 type="button"
@@ -120,8 +133,9 @@ const EduFreeMaterial = () => {
                 Baixar PDF novamente
               </button>
               <p className="mt-3 max-w-sm text-xs leading-relaxed text-brand-muted">
-                Seus dados foram enviados somente para atender a esta
-                solicitação; o site não os armazena.
+                Seus dados foram encaminhados ao responsável da EDUSAUDE por
+                meio do Web3Forms para atender a esta solicitação; o site não
+                os armazena.
               </p>
             </div>
           ) : (
@@ -191,17 +205,17 @@ const EduFreeMaterial = () => {
                   className="mt-0.5 h-4 w-4 shrink-0 accent-brand-teal"
                 />
                 <span>
-                  Concordo em compartilhar meus dados com a EDUSAUDE para
-                  receber este material e registrar meu interesse.
+                  Concordo em compartilhar meus dados com o responsável da
+                  EDUSAUDE, por meio do Web3Forms, para receber este material e
+                  registrar meu interesse.
                 </span>
               </label>
               <input
-                type="text"
-                name="website"
+                type="checkbox"
+                name="botcheck"
                 tabIndex="-1"
-                autoComplete="off"
                 aria-hidden="true"
-                className="absolute -left-[10000px] h-px w-px overflow-hidden"
+                className="hidden"
               />
               {error && (
                 <p role="alert" className="text-sm text-red-700">
@@ -227,8 +241,8 @@ const EduFreeMaterial = () => {
                 )}
               </button>
               <p className="text-center text-[11px] leading-relaxed text-brand-muted">
-                Seus dados serão enviados automaticamente e o PDF será baixado
-                e enviado para seu e-mail.
+                Seus dados serão enviados ao responsável da EDUSAUDE. Após a
+                confirmação, o PDF será baixado nesta página.
               </p>
             </form>
           )}

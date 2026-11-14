@@ -69,42 +69,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-## Envio automático do material EDUSAUDE na HostGator
+## Envio de pedidos do material gratuito EDUSAUDE
 
-O formulário `/edu` usa `api/material-gratuito.php` para notificar
-`rafaeldantas@rafaeldantasfisio.com.br` e enviar o PDF anexado ao e-mail do
-interessado. O envio é feito pelo SMTP do Titan via PHPMailer. O site não salva
-os cadastros no banco de dados.
+O formulário `/edu` envia nome, e-mail e telefone para o Web3Forms. O responsável
+da EDUSAUDE poderá entrar em contato com a pessoa interessada; depois da
+confirmação do envio, o PDF é baixado na página. O site não armazena os dados.
 
-### Publicar o site
+### Configurar o Web3Forms
 
-1. Gere o site com `npm run build`.
-2. No Gerenciador de arquivos da HostGator, envie **o conteúdo** da pasta
-   `frontend/build` para a pasta pública do domínio, normalmente `public_html`.
-   Confira que o PDF, `api/material-gratuito.php` e `api/composer.json` também
-   foram enviados.
-3. No Terminal da HostGator, instale o PHPMailer:
+1. Gere uma Access Key em [web3forms.com](https://web3forms.com/) usando o
+   endereço de e-mail que deve receber os pedidos.
+2. Crie `frontend/.env.local` com a chave:
 
-   ```sh
-   cd ~/public_html/api
-   composer install --no-dev --optimize-autoloader
+   ```env
+   REACT_APP_WEB3FORMS_ACCESS_KEY=sua_access_key
+   REACT_APP_WEB3FORMS_CC_EMAIL=outro-destinatario@exemplo.com
    ```
 
-### Configurar o SMTP do Titan
+   O arquivo `.env.local` é ignorado pelo Git. A Access Key do Web3Forms é
+   usada no navegador e fica incluída no build do site; restrinja o domínio
+   autorizado nas configurações do Web3Forms, se disponível. O endereço de
+   cópia é opcional e requer um plano Web3Forms Pro ativo; sem esse plano,
+   configure a Access Key com o endereço principal que deve receber os pedidos.
 
-Crie `titan-mail-config.php` na pasta da conta **um nível acima de
-`public_html`**. Use `backend/titan-mail-config.example.php` como modelo: copie
-seu conteúdo para o novo arquivo e substitua a senha de exemplo pela senha de
-aplicativo do Titan. O arquivo deve ficar em algo como
-`/home/SEU_USUARIO/titan-mail-config.php`, nunca dentro de `public_html`.
-Restrinja as permissões do arquivo a `600` ou, se a hospedagem exigir acesso
-pelo grupo do servidor web, `640`.
+3. Gere o build depois de configurar a chave:
 
-O modelo usa `smtp.titan.email`, porta `587` e TLS. Confirme host, porta,
-criptografia e credenciais nos dados de configuração SMTP da sua conta Titan.
-Não envie a senha pelo chat nem a inclua no código do site.
+   ```sh
+   cd frontend
+   npm run build
+   ```
 
-Se o Terminal da HostGator não oferecer Composer, execute
-`composer install --no-dev --optimize-autoloader` na pasta
-`frontend/public/api` antes do build e envie também a pasta `api/vendor` gerada.
-O domínio precisa oferecer PHP e permitir conexões de saída ao SMTP do Titan.
+4. Publique o conteúdo de `frontend/build` na pasta pública do domínio. Não é
+   necessário instalar PHP, Composer ou configurar SMTP para esse formulário.

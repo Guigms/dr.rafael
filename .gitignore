@@ -85,6 +85,7 @@ android-sdk/
 **/.emergent/recordings/
 .env
 .env.*
+!frontend/.env.example
 *.env
 titan-mail-config.php
 credentials.json
