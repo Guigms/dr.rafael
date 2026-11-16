@@ -1,8 +1,20 @@
 import { useState } from "react";
 import { ArrowDown, CheckCircle2, FileDown, FileText, LoaderCircle } from "lucide-react";
 
-const PDF_URL = "/Anatomia-clinica-para-fisioterapia.pdf";
-const PDF_FILENAME = "Anatomia-clinica-para-fisioterapia.pdf";
+const FREE_MATERIALS = [
+  {
+    id: "anatomia-clinica",
+    title: "Anatomia Clínica para Fisioterapia",
+    url: "/Anatomia-clinica-para-fisioterapia.pdf",
+    filename: "Anatomia-clinica-para-fisioterapia.pdf",
+  },
+  {
+    id: "exames-laboratoriais",
+    title: "Exames Laboratoriais Aplicados à Fisioterapia",
+    url: "/Exames-laboratoriais-aplicados-a-fisioterapia.pdf",
+    filename: "Exames-laboratoriais-aplicados-a-fisioterapia.pdf",
+  },
+];
 const WEB3FORMS_ACCESS_KEY = process.env.REACT_APP_WEB3FORMS_ACCESS_KEY?.trim();
 const WEB3FORMS_CC_EMAIL = process.env.REACT_APP_WEB3FORMS_CC_EMAIL?.trim();
 
@@ -11,10 +23,10 @@ const EduFreeMaterial = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const downloadMaterial = () => {
+  const downloadMaterial = (material) => {
     const link = document.createElement("a");
-    link.href = PDF_URL;
-    link.download = PDF_FILENAME;
+    link.href = material.url;
+    link.download = material.filename;
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -25,10 +37,13 @@ const EduFreeMaterial = () => {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const submittedLead = {
-      name: formData.get("name").trim(),
-      phone: formData.get("phone").trim(),
-      email: formData.get("email").trim(),
+      name: String(formData.get("name") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
     };
+    const material = FREE_MATERIALS.find(
+      ({ id }) => id === formData.get("material"),
+    );
 
     setIsSubmitting(true);
     setError("");
@@ -39,22 +54,42 @@ const EduFreeMaterial = () => {
           "O formulário ainda não está configurado. A chave do Web3Forms precisa ser adicionada pelo responsável do site."
         );
       }
+      if (!material) {
+        throw new Error("Escolha um dos materiais gratuitos para continuar.");
+      }
+
+      const requestData = new FormData();
+      requestData.set("access_key", WEB3FORMS_ACCESS_KEY);
+      requestData.set(
+        "subject",
+        "Novo interessado no material gratuito da EDUSAUDE",
+      );
+      requestData.set("from_name", "EDUSAUDE");
+      requestData.set(
+        "message",
+        [
+          "A pessoa solicitou acesso ao material gratuito da EDUSAUDE.",
+          "Autorizou o compartilhamento dos dados para receber o material e registrar o interesse.",
+          `Material escolhido: ${material.title}`,
+          `Nome: ${submittedLead.name}`,
+          `Telefone / WhatsApp: ${submittedLead.phone}`,
+          `E-mail: ${submittedLead.email}`,
+        ].join("\n"),
+      );
+      requestData.set("name", submittedLead.name);
+      requestData.set("phone", submittedLead.phone);
+      requestData.set("email", submittedLead.email);
+      requestData.set("material", material.title);
+      if (WEB3FORMS_CC_EMAIL) {
+        requestData.set("ccemail", WEB3FORMS_CC_EMAIL);
+      }
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "Novo interessado no material gratuito da EDUSAUDE",
-          from_name: "EDUSAUDE",
-          ...(WEB3FORMS_CC_EMAIL && { ccemail: WEB3FORMS_CC_EMAIL }),
-          message:
-            "A pessoa solicitou acesso ao material gratuito da EDUSAUDE. Autorizou o compartilhamento dos dados para receber o material e registrar o interesse.",
-          ...submittedLead,
-        }),
+        body: requestData,
       });
       const result = await response.json();
 
@@ -64,8 +99,8 @@ const EduFreeMaterial = () => {
         );
       }
 
-      setLead(submittedLead);
-      downloadMaterial();
+      setLead({ ...submittedLead, material });
+      downloadMaterial(material);
       form.reset();
     } catch (requestError) {
       setError(
@@ -90,12 +125,12 @@ const EduFreeMaterial = () => {
             Material gratuito
           </span>
           <h2 className="mt-6 max-w-xl font-serif text-3xl font-medium leading-tight text-brand-ink sm:text-4xl">
-            Explore a anatomia clínica aplicada à fisioterapia.
+            Escolha seu material de estudo gratuito.
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-brand-muted sm:text-base">
-            Para acessar gratuitamente o material Anatomia Clínica para
-            Fisioterapia, informe seus dados de contato. O responsável poderá
-            falar com você e o PDF ficará disponível para baixar.
+            Escolha um dos materiais e informe seus dados para receber o PDF
+            gratuitamente. O responsável poderá entrar em contato para
+            compartilhar outros conteúdos da EDUSAUDE.
           </p>
           <div className="mt-7 flex items-center gap-3 text-sm font-medium text-brand-petrol">
             <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-teal" />
@@ -120,12 +155,13 @@ const EduFreeMaterial = () => {
                 Seus dados foram enviados para a EDUSAUDE.
               </p>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-brand-muted">
-                O responsável poderá entrar em contato pelo telefone ou e-mail
-                informado. O PDF está disponível para baixar abaixo.
+                Você escolheu: <strong>{lead.material.title}</strong>. O
+                responsável poderá entrar em contato pelo telefone ou e-mail
+                informado.
               </p>
               <button
                 type="button"
-                onClick={downloadMaterial}
+                onClick={() => downloadMaterial(lead.material)}
                 data-testid="edu-free-material-download"
                 className="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-teal px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-petrol"
               >
@@ -143,6 +179,34 @@ const EduFreeMaterial = () => {
               <h3 className="font-serif text-xl font-medium text-brand-ink">
                 Baixe seu material gratuito
               </h3>
+              <fieldset className="space-y-2">
+                <legend className="mb-2 block text-xs font-semibold text-brand-petrol">
+                  Escolha o material
+                </legend>
+                {FREE_MATERIALS.map((material, index) => (
+                  <label
+                    key={material.id}
+                    htmlFor={`free-material-choice-${material.id}`}
+                    className="flex cursor-pointer items-start gap-3 rounded-xl border hairline bg-white p-3 text-sm text-brand-ink transition hover:border-brand-teal"
+                  >
+                    <input
+                      id={`free-material-choice-${material.id}`}
+                      name="material"
+                      type="radio"
+                      value={material.id}
+                      required
+                      data-testid={`edu-free-material-choice-${material.id}`}
+                      className="mt-0.5 h-4 w-4 shrink-0 accent-brand-teal"
+                    />
+                    <span>
+                      <span className="block font-semibold">{material.title}</span>
+                      <span className="mt-0.5 block text-xs text-brand-muted">
+                        Material {index + 1} de 2 — PDF gratuito
+                      </span>
+                    </span>
+                  </label>
+                ))}
+              </fieldset>
               <div>
                 <label
                   htmlFor="free-material-name"

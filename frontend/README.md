@@ -69,11 +69,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-## Envio de pedidos do material gratuito EDUSAUDE
+## Envio de pedidos dos materiais gratuitos EDUSAUDE
 
-O formulário `/edu` envia nome, e-mail e telefone para o Web3Forms. O responsável
-da EDUSAUDE poderá entrar em contato com a pessoa interessada; depois da
-confirmação do envio, o PDF é baixado na página. O site não armazena os dados.
+O formulário `/edu` permite escolher entre os materiais Anatomia Clínica para
+Fisioterapia e Exames Laboratoriais Aplicados à Fisioterapia. Para liberar o
+download escolhido, envia nome, e-mail, telefone e material solicitado ao
+Web3Forms. O responsável da EDUSAUDE poderá entrar em contato com a pessoa
+interessada; depois da confirmação do envio, o PDF escolhido é baixado na
+página. O site não armazena os dados.
 
 ### Configurar o Web3Forms
 
@@ -101,3 +104,9 @@ confirmação do envio, o PDF é baixado na página. O site não armazena os dad
 
 4. Publique o conteúdo de `frontend/build` na pasta pública do domínio. Não é
    necessário instalar PHP, Composer ou configurar SMTP para esse formulário.
+
+O arquivo `frontend/public/.htaccess` configura o Apache para encaminhar rotas
+do React, como `/edu`, para `index.html`. Depois do build, confirme que o arquivo
+oculto `.htaccess` foi enviado para a raiz pública do domínio junto com os
+demais arquivos. Se já houver um `.htaccess` nessa pasta, integre essas regras
+ao arquivo existente em vez de substituí-lo.
